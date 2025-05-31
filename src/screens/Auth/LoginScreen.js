@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import { COLORS, SIZES } from "../../constants";
+import COLORS from "../../constant/color";
+import SIZES from "../../constant/dimensions";
 import { simulateLogin } from "../../navigation/MainNavigator"; // For testing
 
 const LoginScreen = ({ navigation }) => {

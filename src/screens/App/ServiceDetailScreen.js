@@ -1,14 +1,23 @@
 // src/screens/App/ServiceDetailScreen.js
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS, SIZES } from '../../constants';
-import { CLEANING_SERVICES, APARTMENT_SIZES } from '../../data/catalogData';
-import * as Animatable from 'react-native-animatable';
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import COLORS from "../../constant/color";
+import SIZES from "../../constant/dimensions";
+import { CLEANING_SERVICES, APARTMENT_SIZES } from "../../data/catalogData";
+import * as Animatable from "react-native-animatable";
 
 const ServiceDetailScreen = ({ route, navigation }) => {
   const { serviceId } = route.params;
-  const service = Object.values(CLEANING_SERVICES).find(s => s.id === serviceId);
+  const service = Object.values(CLEANING_SERVICES).find(
+    (s) => s.id === serviceId
+  );
 
   if (!service) {
     return (
@@ -28,50 +37,87 @@ const ServiceDetailScreen = ({ route, navigation }) => {
           <Text style={styles.serviceDescription}>{service.description}</Text>
         </Animatable.View>
 
-        <Animatable.View animation="fadeInUp" delay={200} style={styles.section}>
+        <Animatable.View
+          animation="fadeInUp"
+          delay={200}
+          style={styles.section}
+        >
           <Text style={styles.sectionTitle}>Tasks Included:</Text>
           {service.tasks.map((task, index) => (
-            <Animatable.Text key={index} style={styles.taskItem} animation="fadeInUp" delay={300 + index * 50}>
+            <Animatable.Text
+              key={index}
+              style={styles.taskItem}
+              animation="fadeInUp"
+              delay={300 + index * 50}
+            >
               • {task}
             </Animatable.Text>
           ))}
         </Animatable.View>
 
-        <Animatable.View animation="fadeInUp" delay={400} style={styles.section}>
+        <Animatable.View
+          animation="fadeInUp"
+          delay={400}
+          style={styles.section}
+        >
           <Text style={styles.sectionTitle}>Pricing:</Text>
           {Object.keys(service.pricing).map((sizeKey, index) => (
-            <Animatable.View key={sizeKey} style={styles.pricingItem} animation="fadeInUp" delay={500 + index * 50}>
+            <Animatable.View
+              key={sizeKey}
+              style={styles.pricingItem}
+              animation="fadeInUp"
+              delay={500 + index * 50}
+            >
               <Text style={styles.apartmentSize}>{sizeKey}:</Text>
               <Text style={styles.price}>
-                {typeof service.pricing[sizeKey] === 'number'
+                {typeof service.pricing[sizeKey] === "number"
                   ? `₦${service.pricing[sizeKey].toLocaleString()}`
                   : service.pricing[sizeKey]}
               </Text>
             </Animatable.View>
           ))}
           {service.recurringDiscount && (
-             <Animatable.Text style={styles.discountText} animation="fadeInUp" delay={600}>{service.recurringDiscount}</Animatable.Text>
+            <Animatable.Text
+              style={styles.discountText}
+              animation="fadeInUp"
+              delay={600}
+            >
+              {service.recurringDiscount}
+            </Animatable.Text>
           )}
         </Animatable.View>
 
-         <Animatable.View animation="fadeInUp" delay={500} style={styles.section}>
-            <Text style={styles.sectionTitle}>Estimated Time:</Text>
-            {Object.entries(service.estimatedTime).map(([size, time], index) => (
-                 <Animatable.View key={size} style={styles.pricingItem} animation="fadeInUp" delay={700 + index * 50}>
-                    <Text style={styles.apartmentSize}>{size}:</Text>
-                    <Text style={styles.price}>{time}</Text>
-                </Animatable.View>
-            ))}
+        <Animatable.View
+          animation="fadeInUp"
+          delay={500}
+          style={styles.section}
+        >
+          <Text style={styles.sectionTitle}>Estimated Time:</Text>
+          {Object.entries(service.estimatedTime).map(([size, time], index) => (
+            <Animatable.View
+              key={size}
+              style={styles.pricingItem}
+              animation="fadeInUp"
+              delay={700 + index * 50}
+            >
+              <Text style={styles.apartmentSize}>{size}:</Text>
+              <Text style={styles.price}>{time}</Text>
+            </Animatable.View>
+          ))}
         </Animatable.View>
 
-
         <Animatable.View animation="fadeInUp" delay={600}>
-            <TouchableOpacity
-                style={styles.bookButton}
-                onPress={() => navigation.navigate('Booking', { serviceId: service.id, serviceName: service.name })}
-            >
-                <Text style={styles.bookButtonText}>Book This Service</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.bookButton}
+            onPress={() =>
+              navigation.navigate("Booking", {
+                serviceId: service.id,
+                serviceName: service.name,
+              })
+            }
+          >
+            <Text style={styles.bookButtonText}>Book This Service</Text>
+          </TouchableOpacity>
         </Animatable.View>
       </ScrollView>
     </SafeAreaView>
@@ -89,7 +135,7 @@ const styles = StyleSheet.create({
   },
   serviceName: {
     fontSize: SIZES.h1,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: COLORS.primary,
     marginBottom: SIZES.paddingSmall,
   },
@@ -107,7 +153,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: SIZES.h2,
-    fontWeight: '600',
+    fontWeight: "600",
     color: COLORS.black,
     marginBottom: SIZES.paddingSmall,
   },
@@ -118,10 +164,10 @@ const styles = StyleSheet.create({
     marginLeft: SIZES.base,
   },
   pricingItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: SIZES.base / 2,
-    paddingVertical: SIZES.base /2,
+    paddingVertical: SIZES.base / 2,
   },
   apartmentSize: {
     fontSize: SIZES.body3,
@@ -130,33 +176,33 @@ const styles = StyleSheet.create({
   },
   price: {
     fontSize: SIZES.body3,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: COLORS.accent,
   },
   discountText: {
     fontSize: SIZES.body4,
     color: COLORS.primary,
-    fontStyle: 'italic',
+    fontStyle: "italic",
     marginTop: SIZES.base,
   },
   bookButton: {
     backgroundColor: COLORS.primary,
-    paddingVertical: SIZES.paddingSmall + SIZES.base /2,
+    paddingVertical: SIZES.paddingSmall + SIZES.base / 2,
     borderRadius: SIZES.radius,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: SIZES.padding,
   },
   bookButtonText: {
     color: COLORS.white,
     fontSize: SIZES.h3,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   errorText: {
     fontSize: SIZES.h3,
     color: COLORS.error,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: SIZES.padding * 2,
-  }
+  },
 });
 
 export default ServiceDetailScreen;

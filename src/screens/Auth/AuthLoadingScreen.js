@@ -1,7 +1,7 @@
 // src/screens/Auth/AuthLoadingScreen.js
-import React from "react";
 import { View, ActivityIndicator, StyleSheet, Text } from "react-native";
-import { COLORS, SIZES } from "../../constants";
+import COLORS from "../../constant/color";
+import SIZES from "../../constant/dimensions";
 
 const AuthLoadingScreen = () => {
   return (

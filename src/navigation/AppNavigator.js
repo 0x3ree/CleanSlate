@@ -1,5 +1,4 @@
 // src/navigation/AppNavigator.js
-import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/App/HomeScreen";
@@ -11,7 +10,7 @@ import MyBookingsScreen from "../screens/App/MyBookingsScreen";
 import ProfileScreen from "../screens/App/ProfileScreen";
 import PromotionsScreen from "../screens/App/PromotionsScreen";
 import WhyChooseUsScreen from "../screens/App/WhyChooseUsScreen";
-import { COLORS } from "../constants/colors";
+import { COLORS } from "../constant/color"; // Ensure ../constants/colors.js exports COLORS, e.g. export const COLORS = { primary: '#...', darkGray: '#...' };
 // import Icon from 'react-native-vector-icons/Ionicons'; // Example, install if you want icons
 
 const Tab = createBottomTabNavigator();

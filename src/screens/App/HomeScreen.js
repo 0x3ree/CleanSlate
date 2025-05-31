@@ -9,7 +9,8 @@ import {
   FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { COLORS, SIZES } from "../../constants";
+import COLORS from "../../constant/color";
+import SIZES from "../../constant/dimensions";
 import {
   SERVICE_OVERVIEW,
   ALL_SERVICE_TYPES,

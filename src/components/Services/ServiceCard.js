@@ -1,7 +1,8 @@
 // src/components/Services/ServiceCard.js
 import React from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
-import { COLORS, SIZES } from "../../constants";
+import COLORS from "../../constant/color";
+import SIZES from "../../constant/dimensions";
 import Card from "../common/Card"; // Assuming you have a Card component for consistent styling
 
 const ServiceCard = ({ service, onPress, style }) => {
